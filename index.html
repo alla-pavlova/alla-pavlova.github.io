@@ -1,97 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Alla Pavlova</title>
+<meta charset="UTF-8">
+<title>Alla Pavlova</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      line-height: 1.6;
-      background: #f9fbff;
-      color: #222;
-    }
+<style>
+:root {
+  --bg: #f9fbff;
+  --text: #222;
+  --card: #ffffff;
+  --accent: #6fb3ff;
+}
 
-    h1 {
-      margin-bottom: 5px;
-    }
+.dark {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --card: #1e293b;
+  --accent: #60a5fa;
+}
 
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
 
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 4px solid #6fb3ff;
-      object-fit: cover;
-    }
-    .avatar:hover {
-      transform: scale(1.05);
-      transition: 0.3s;
-    }
-    .subtitle {
-      color: #555;
-    }
+/* HEADER */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
 
-    a {
-      color: #2b7de9;
-      text-decoration: none;
-    }
+.toggle {
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+/* PROFILE */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-    h2 {
-      margin-top: 30px;
-      border-bottom: 2px solid #6fb3ff;
-      padding-bottom: 5px;
-    }
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  object-fit: cover;
+  transition: 0.3s;
+}
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-    }
+.avatar:hover {
+  transform: scale(1.05);
+}
 
-    .card {
-      border: 1px solid #cfe5ff;
-      border-radius: 12px;
-      padding: 15px;
-      background: #ffffff;
-      transition: 0.2s;
-    }
+.subtitle {
+  color: gray;
+}
 
-    .card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transform: translateY(-2px);
-    }
+/* LINKS */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
 
-    .card-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+a:hover {
+  text-decoration: underline;
+}
 
-    .card-desc {
-      font-size: 14px;
-      color: #555;
-    }
+/* SECTIONS */
+h2 {
+  margin-top: 40px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 5px;
+}
 
-  </style>
+/* PROJECTS */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid rgba(111,179,255,0.3);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: gray;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 14px;
+  color: gray;
+}
+</style>
 </head>
 
 <body>
 
+<div class="topbar">
+  <div><b>Portfolio</b></div>
+  <div class="toggle" onclick="toggleTheme()">🌙 Theme</div>
+</div>
+
 <div class="header">
-  <img src="https://avatars.githubusercontent.com/u/167747709?s=400&u=0dd135aba0dca8eb5f308be1ff132ccb9e2a103b&v=4" class="avatar">
+  <img src="https://avatars.githubusercontent.com/u/167747709?s=400&v=4" class="avatar">
 
   <div>
     <h1>Alla Pavlova</h1>
@@ -108,27 +148,21 @@
     <div class="card-title">
       <a href="https://github.com/alla-pavlova/ls-resort-backend">LS Resort (Backend)</a>
     </div>
-    <div class="card-desc">
-      FastAPI backend, PostgreSQL
-    </div>
+    <div class="card-desc">FastAPI, PostgreSQL</div>
   </div>
 
   <div class="card">
     <div class="card-title">
       <a href="https://github.com/alla-pavlova/ls-resort-frontend">LS Resort (Frontend)</a>
     </div>
-    <div class="card-desc">
-      React + TypeScript UI
-    </div>
+    <div class="card-desc">React, TypeScript</div>
   </div>
 
   <div class="card">
     <div class="card-title">
       <a href="https://github.com/ScanText">ScanText</a>
     </div>
-    <div class="card-desc">
-      OCR service (image → text)
-    </div>
+    <div class="card-desc">OCR service</div>
   </div>
 
   <div class="card">
@@ -137,18 +171,14 @@
         Allures
       </a>
     </div>
-    <div class="card-desc">
-      Microservices backend (deployment branch)
-    </div>
+    <div class="card-desc">Microservices backend</div>
   </div>
 
   <div class="card">
     <div class="card-title">
       <a href="https://github.com/alla-pavlova/Shop">ShopKnife</a>
     </div>
-    <div class="card-desc">
-      Mobile app (React Native / Expo)
-    </div>
+    <div class="card-desc">React Native (Expo)</div>
   </div>
 
 </div>
@@ -158,6 +188,16 @@
 <p>
   <a href="https://linkedin.com/in/alla-pavlova88">LinkedIn</a>
 </p>
+
+<div class="footer">
+  © 2026 Alla Pavlova
+</div>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+</script>
 
 </body>
 </html>
