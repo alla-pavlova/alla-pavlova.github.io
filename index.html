@@ -2,72 +2,213 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alla Pavlova</title>
 
 <style>
 :root {
-  --bg: #f9fbff;
-  --text: #222;
+  --bg: #f8fbff;
+  --text: #1f2937;
   --card: #ffffff;
-  --accent: #6fb3ff;
+  --accent: #60a5fa;
+  --muted: #6b7280;
+  --border: rgba(96, 165, 250, 0.35);
 }
 
 .dark {
   --bg: #0f172a;
-  --text: #e2e8f0;
+  --text: #e5eefc;
   --card: #1e293b;
-  --accent: #60a5fa;
+  --accent: #7cc4ff;
+  --muted: #94a3b8;
+  --border: rgba(124, 196, 255, 0.28);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
   background: var(--bg);
   color: var(--text);
-  transition: 0.3s;
+  transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* HEADER */
+/* subtle feather-like background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(96,165,250,0.10), transparent 18%),
+    radial-gradient(circle at 88% 16%, rgba(96,165,250,0.08), transparent 16%),
+    radial-gradient(circle at 78% 78%, rgba(96,165,250,0.07), transparent 18%);
+  z-index: -2;
+}
+
+body::after {
+  content: "🪶";
+  position: fixed;
+  right: 4%;
+  top: 10%;
+  font-size: 180px;
+  opacity: 0.04;
+  transform: rotate(-12deg);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 34px;
+  padding: 12px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
 }
 
-.toggle {
-  cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 8px;
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 9px 14px;
   border: 1px solid var(--accent);
+  border-radius: 10px;
+  color: var(--accent);
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-size: 14px;
 }
 
-/* PROFILE */
-.header {
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  background: rgba(96, 165, 250, 0.08);
+}
+
+.hero {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
+  margin-bottom: 12px;
 }
 
 .avatar {
-  width: 140px;
-  height: 140px;
+  width: 144px;
+  height: 144px;
   border-radius: 50%;
   border: 4px solid var(--accent);
   object-fit: cover;
-  transition: 0.3s;
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .avatar:hover {
   transform: scale(1.05);
 }
 
-.subtitle {
-  color: gray;
+.hero-text h1 {
+  margin: 0 0 8px;
+  font-size: 2.35rem;
 }
 
-/* LINKS */
+.subtitle {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+.role {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+h2 {
+  margin-top: 38px;
+  margin-bottom: 14px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 6px;
+}
+
+.about {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  color: var(--text);
+}
+
+.about p {
+  margin: 0;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+}
+
+.card-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--muted);
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -77,119 +218,123 @@ a:hover {
   text-decoration: underline;
 }
 
-/* SECTIONS */
-h2 {
-  margin-top: 40px;
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 5px;
-}
-
-/* PROJECTS */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-.card {
+.contact-box {
   background: var(--card);
-  border-radius: 12px;
-  padding: 15px;
-  border: 1px solid rgba(111,179,255,0.3);
-  transition: 0.2s;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.card-title {
-  font-weight: bold;
-}
-
-.card-desc {
-  font-size: 14px;
-  color: gray;
-}
-
-/* FOOTER */
 .footer {
-  margin-top: 60px;
+  margin-top: 52px;
   text-align: center;
+  color: var(--muted);
   font-size: 14px;
-  color: gray;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  body::after {
+    font-size: 120px;
+    right: 2%;
+    top: 6%;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  <div><b>Portfolio</b></div>
-  <div class="toggle" onclick="toggleTheme()">🌙 Theme</div>
+<div class="topbar fade-in">
+  <div class="brand">Alla Pavlova</div>
+  <div class="top-actions">
+    <a class="btn" href="https://linkedin.com/in/alla-pavlova88" target="_blank">LinkedIn</a>
+
+    <!-- ЗАМЕНИ ссылку на свой PDF, когда загрузишь CV в этот репозиторий -->
+    <a class="btn" href="cv/Alla_Pavlova_CV.pdf" download>Download CV</a>
+
+    <button class="btn" onclick="toggleTheme()">🌙 Theme</button>
+  </div>
 </div>
 
-<div class="header">
-  <img src="https://avatars.githubusercontent.com/u/167747709?s=400&v=4" class="avatar">
+<section class="hero fade-in delay-1">
+  <img
+    src="https://avatars.githubusercontent.com/u/167747709?s=400&u=0dd135aba0dca8eb5f308be1ff132ccb9e2a103b&v=4"
+    class="avatar"
+    alt="Alla Pavlova"
+  >
 
-  <div>
+  <div class="hero-text">
     <h1>Alla Pavlova</h1>
     <p class="subtitle">Dnipro, Ukraine • Open to remote work</p>
-    <p>Backend & Fullstack Developer</p>
+    <p class="role">Backend & Fullstack Developer</p>
   </div>
-</div>
+</section>
 
-<h2>Projects</h2>
+<h2 class="fade-in delay-2">About me</h2>
+<section class="about fade-in delay-2">
+  <p>
+    I build practical web applications and APIs with a focus on backend development,
+    clean structure, and real project workflows. My stack includes FastAPI, ASP.NET,
+    React, PostgreSQL, Docker, and Terraform. I am especially interested in backend
+    roles, web platforms, OCR services, and modular application architecture.
+  </p>
+</section>
 
-<div class="projects">
+<h2 class="fade-in delay-3">Projects</h2>
+<div class="projects fade-in delay-3">
 
   <div class="card">
     <div class="card-title">
-      <a href="https://github.com/alla-pavlova/ls-resort-backend">LS Resort (Backend)</a>
+      <a href="https://github.com/alla-pavlova/ls-resort-backend" target="_blank">LS Resort (Backend)</a>
     </div>
-    <div class="card-desc">FastAPI, PostgreSQL</div>
+    <div class="card-desc">FastAPI backend, PostgreSQL</div>
   </div>
 
   <div class="card">
     <div class="card-title">
-      <a href="https://github.com/alla-pavlova/ls-resort-frontend">LS Resort (Frontend)</a>
+      <a href="https://github.com/alla-pavlova/ls-resort-frontend" target="_blank">LS Resort (Frontend)</a>
     </div>
     <div class="card-desc">React, TypeScript</div>
   </div>
 
   <div class="card">
     <div class="card-title">
-      <a href="https://github.com/ScanText">ScanText</a>
+      <a href="https://github.com/ScanText" target="_blank">ScanText</a>
     </div>
-    <div class="card-desc">OCR service</div>
+    <div class="card-desc">OCR service for image-to-text recognition</div>
   </div>
 
   <div class="card">
     <div class="card-title">
-      <a href="https://github.com/Allures-allol/allures-backend/tree/multi-servis-upd">
-        Allures
-      </a>
+      <a href="https://github.com/Allures-allol/allures-backend/tree/multi-servis-upd" target="_blank">Allures</a>
     </div>
-    <div class="card-desc">Microservices backend</div>
+    <div class="card-desc">Microservices backend, deployment branch</div>
   </div>
 
   <div class="card">
     <div class="card-title">
-      <a href="https://github.com/alla-pavlova/Shop">ShopKnife</a>
+      <a href="https://github.com/alla-pavlova/Shop" target="_blank">ShopKnife</a>
     </div>
-    <div class="card-desc">React Native (Expo)</div>
+    <div class="card-desc">Mobile app built with React Native / Expo</div>
   </div>
 
 </div>
 
-<h2>Contact</h2>
+<h2 class="fade-in delay-4">Contact</h2>
+<div class="contact-box fade-in delay-4">
+  <p><a href="https://linkedin.com/in/alla-pavlova88" target="_blank">LinkedIn</a></p>
+</div>
 
-<p>
-  <a href="https://linkedin.com/in/alla-pavlova88">LinkedIn</a>
-</p>
-
-<div class="footer">
+<div class="footer fade-in delay-4">
   © 2026 Alla Pavlova
 </div>
 
