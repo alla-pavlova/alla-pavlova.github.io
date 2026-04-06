@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Alla Pavlova</title>
+<style>
+:root {
+  --bg: #f8fbff;
+  --text: #1f2937;
+  --card: #ffffff;
+  --accent: #60a5fa;
+  --muted: #6b7280;
+  --border: rgba(96, 165, 250, 0.35);
+  --shadow: rgba(0,0,0,0.08);
+}
+.dark {
+  --bg: #0f172a;
+  --text: #e5eefc;
+  --card: #1e293b;
+  --accent: #7cc4ff;
+  --muted: #94a3b8;
+  --border: rgba(124, 196, 255, 0.28);
+  --shadow: rgba(0,0,0,0.22);
+}
+* { box-sizing: border-box; }
+body {
+  font-family: Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 96px 20px 40px;
+  background: linear-gradient(135deg, var(--bg) 0%, #eef5ff 100%);
+  color: var(--text);
+}
+.topbar-wrap {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+}
+.topbar-inner {
+  max-width: 980px; margin: 16px auto 0; padding: 0 20px;
+}
+.topbar {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 12px 16px; background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: 0 8px 22px var(--shadow);
+}
+.dark .topbar { background: rgba(30,41,59,0.78); }
+.brand { font-weight: 700; }
+.top-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 9px 14px; border: 1px solid var(--accent);
+  border-radius: 10px; color: var(--accent); background: transparent;
+  text-decoration: none; font-size: 14px;
+}
+h1 {
+  margin-top: 0; margin-bottom: 18px; font-size: 2.2rem;
+}
+.section {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.section p {
+  margin-top: 0;
+  margin-bottom: 14px;
+  line-height: 1.65;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+.card-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.card-desc {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.footer {
+  margin-top: 52px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
 
+<div class="topbar-wrap">
+  <div class="topbar-inner">
+    <div class="topbar">
+      <div class="brand">Alla Pavlova</div>
+      <div class="top-actions">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="projects.html">Projects</a>
+        <a class="btn" href="about.html">About</a>
+        <a class="btn" href="https://www.linkedin.com/in/alla-pavlova88/" target="_blank">LinkedIn</a>
+        <a class="btn" href="cv/cv.pdf" download>Download CV</a>
+        <button class="btn" onclick="toggleTheme()">🌙</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1>About</h1>
+
+<div class="section">
+  <p>
+    I am a backend and fullstack developer focused on practical web applications, APIs,
+    structured workflows, and real-world project implementation.
+  </p>
+  <p>
+    My current stack includes FastAPI, ASP.NET, React, PostgreSQL, Docker, and cloud/deployment basics.
+    I am especially interested in backend systems, OCR services, modular architecture, and applied AI.
+  </p>
+  <p>
+    My background combines technical learning with strong experience in organization,
+    documentation, communication, and system thinking. This helps me work carefully with
+    project structure, requirements, and implementation details.
+  </p>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="card-title">Backend Focus</div>
+    <div class="card-desc">
+      APIs, business logic, data structures, database integration, modular project structure.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Frontend & UI</div>
+    <div class="card-desc">
+      React-based interfaces, service pages, content structure, and user-oriented layouts.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Deployment</div>
+    <div class="card-desc">
+      Docker, Nginx, cloud basics, local and deployment-oriented environments.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Research & Documentation</div>
+    <div class="card-desc">
+      Academic background, structured writing, analytical thinking, and process-oriented work.
+    </div>
+  </div>
+</div>
+
+<div class="footer">© 2026 Alla Pavlova</div>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
