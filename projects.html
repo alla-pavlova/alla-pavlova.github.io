@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Alla Pavlova</title>
+<style>
+:root {
+  --bg: #f8fbff;
+  --text: #1f2937;
+  --card: #ffffff;
+  --accent: #60a5fa;
+  --muted: #6b7280;
+  --border: rgba(96, 165, 250, 0.35);
+  --shadow: rgba(0,0,0,0.08);
+}
+.dark {
+  --bg: #0f172a;
+  --text: #e5eefc;
+  --card: #1e293b;
+  --accent: #7cc4ff;
+  --muted: #94a3b8;
+  --border: rgba(124, 196, 255, 0.28);
+  --shadow: rgba(0,0,0,0.22);
+}
+* { box-sizing: border-box; }
+body {
+  font-family: Arial, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 96px 20px 40px;
+  background: linear-gradient(135deg, var(--bg) 0%, #eef5ff 100%);
+  color: var(--text);
+}
+.topbar-wrap {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+}
+.topbar-inner {
+  max-width: 980px; margin: 16px auto 0; padding: 0 20px;
+}
+.topbar {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 12px 16px; background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: 0 8px 22px var(--shadow);
+}
+.dark .topbar { background: rgba(30,41,59,0.78); }
+.brand { font-weight: 700; }
+.top-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 9px 14px; border: 1px solid var(--accent);
+  border-radius: 10px; color: var(--accent); background: transparent;
+  text-decoration: none; font-size: 14px;
+}
+h1 {
+  margin-top: 0; margin-bottom: 12px; font-size: 2.2rem;
+}
+.page-intro {
+  color: var(--muted); margin-bottom: 28px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+.card-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+.card-desc {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.meta {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: rgba(96,165,250,0.06);
+}
+.links {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.link-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer {
+  margin-top: 52px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+</style>
+</head>
+<body>
 
+<div class="topbar-wrap">
+  <div class="topbar-inner">
+    <div class="topbar">
+      <div class="brand">Alla Pavlova</div>
+      <div class="top-actions">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="projects.html">Projects</a>
+        <a class="btn" href="about.html">About</a>
+        <a class="btn" href="https://www.linkedin.com/in/alla-pavlova88/" target="_blank">LinkedIn</a>
+        <a class="btn" href="cv/cv.pdf" download>Download CV</a>
+        <button class="btn" onclick="toggleTheme()">🌙</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1>Projects</h1>
+<p class="page-intro">
+Selected portfolio projects in backend, frontend, deployment, OCR, and mobile development.
+</p>
+
+<div class="grid">
+  <div class="card">
+    <div class="card-title">LS Resort / Wellness Website Demo</div>
+    <div class="card-desc">
+      Fullstack case for a wellness-oriented service website. Frontend demo is being prepared in a separate public version.
+    </div>
+    <div class="meta">
+      <span class="tag">FastAPI</span>
+      <span class="tag">React</span>
+      <span class="tag">PostgreSQL</span>
+    </div>
+    <div class="links">
+      <a class="link-btn" href="https://github.com/alla-pavlova/ls-resort-backend" target="_blank">Backend Repo</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ScanText</div>
+    <div class="card-desc">
+      OCR-oriented project for image-to-text recognition with API and web/mobile integration direction.
+    </div>
+    <div class="meta">
+      <span class="tag">FastAPI</span>
+      <span class="tag">OCR</span>
+      <span class="tag">AI</span>
+    </div>
+    <div class="links">
+      <a class="link-btn" href="https://github.com/ScanText" target="_blank">Organization</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Allures</div>
+    <div class="card-desc">
+      Microservices-based eCommerce backend with deployment-oriented branch and cloud/container workflow.
+    </div>
+    <div class="meta">
+      <span class="tag">Microservices</span>
+      <span class="tag">Docker</span>
+      <span class="tag">AWS</span>
+    </div>
+    <div class="links">
+      <a class="link-btn" href="https://github.com/Allures-allol/allures-backend/tree/multi-servis-upd" target="_blank">Repository</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">EPAM IT Marathon</div>
+    <div class="card-desc">
+      Training project with AWS infrastructure, Terraform, .NET backend, React frontend, and deployment practice.
+    </div>
+    <div class="meta">
+      <span class="tag">Terraform</span>
+      <span class="tag">AWS</span>
+      <span class="tag">.NET</span>
+    </div>
+    <div class="links">
+      <a class="link-btn" href="https://github.com/alla-pavlova/it_marafon" target="_blank">Repository</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">ShopKnife</div>
+    <div class="card-desc">
+      Mobile application built with React Native / Expo as a training and portfolio project.
+    </div>
+    <div class="meta">
+      <span class="tag">React Native</span>
+      <span class="tag">Expo</span>
+      <span class="tag">Mobile</span>
+    </div>
+    <div class="links">
+      <a class="link-btn" href="https://github.com/alla-pavlova/Shop" target="_blank">Repository</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Academic Monograph</div>
+    <div class="card-desc">
+      Co-author of academic monograph on innovation management, intellectual property systems, and entrepreneurship in socio-technical environments.
+    </div>
+    <div class="meta">
+      <span class="tag">Research</span>
+      <span class="tag">Innovation</span>
+      <span class="tag">IP</span>
+    </div>
+  </div>
+</div>
+
+<div class="footer">© 2026 Alla Pavlova</div>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
