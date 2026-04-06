@@ -13,6 +13,7 @@
   --accent: #60a5fa;
   --muted: #6b7280;
   --border: rgba(96, 165, 250, 0.35);
+  --shadow: rgba(0,0,0,0.08);
 }
 
 .dark {
@@ -22,17 +23,22 @@
   --accent: #7cc4ff;
   --muted: #94a3b8;
   --border: rgba(124, 196, 255, 0.28);
+  --shadow: rgba(0,0,0,0.22);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   max-width: 980px;
   margin: 0 auto;
-  padding: 28px 20px 40px;
+  padding: 96px 20px 40px;
   background: linear-gradient(135deg, var(--bg) 0%, #eef5ff 100%);
   color: var(--text);
   transition: background 0.3s ease, color 0.3s ease;
@@ -56,15 +62,42 @@ body {
   }
 }
 
+/* header */
+.topbar-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.topbar-wrap.hidden {
+  transform: translateY(-110%);
+  opacity: 0.96;
+}
+
+.topbar-inner {
+  max-width: 980px;
+  margin: 16px auto 0;
+  padding: 0 20px;
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 34px;
+  gap: 16px;
   padding: 12px 16px;
-  background: var(--card);
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 14px;
+  box-shadow: 0 8px 22px var(--shadow);
+}
+
+.dark .topbar {
+  background: rgba(30,41,59,0.78);
 }
 
 .brand {
@@ -94,10 +127,11 @@ body {
 .btn:hover {
   text-decoration: none;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px var(--shadow);
   background: rgba(96, 165, 250, 0.08);
 }
 
+/* hero */
 .hero {
   display: flex;
   justify-content: space-between;
@@ -119,7 +153,7 @@ body {
   border: 4px solid var(--accent);
   object-fit: cover;
   transition: transform 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px var(--shadow);
 }
 
 .avatar:hover {
@@ -143,7 +177,7 @@ body {
 
 .feather {
   width: 170px;
-  opacity: 0.9;
+  opacity: 0.92;
   transform: rotate(-10deg);
   transition: transform 0.3s ease;
 }
@@ -152,6 +186,7 @@ body {
   transform: rotate(-6deg) scale(1.03);
 }
 
+/* sections */
 h2 {
   margin-top: 38px;
   margin-bottom: 14px;
@@ -161,19 +196,23 @@ h2 {
 
 .about,
 .contact-box,
-.info-box {
+.info-box,
+.article-box {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
 }
 
 .about p,
-.info-box p {
+.info-box p,
+.article-box p {
   margin: 0;
 }
 
-.projects {
+.projects,
+.domains {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
@@ -200,6 +239,24 @@ h2 {
 .card-desc {
   font-size: 14px;
   color: var(--muted);
+  line-height: 1.5;
+}
+
+.meta {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: rgba(96,165,250,0.06);
 }
 
 a {
@@ -217,12 +274,7 @@ a:hover {
   flex-direction: column;
   gap: 10px;
 }
-.card-desc {
-  font-size: 14px;
-  color: #555;
-  line-height: 1.5;
-}
-  
+
 .footer {
   margin-top: 52px;
   text-align: center;
@@ -231,6 +283,10 @@ a:hover {
 }
 
 @media (max-width: 820px) {
+  body {
+    padding-top: 110px;
+  }
+
   .hero {
     flex-direction: column;
     align-items: flex-start;
@@ -249,18 +305,27 @@ a:hover {
   .hero-text h1 {
     font-size: 2rem;
   }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar fade-in">
-  <div class="brand">Alla Pavlova</div>
-  <div class="top-actions">
-    <a class="btn" href="https://www.linkedin.com/in/alla-pavlova88/" target="_blank">LinkedIn</a>
-    <a class="btn" href="cv/cv.pdf" download>Download CV</a>
-    <button class="btn" onclick="toggleTheme()">🌙 </button>
+<div class="topbar-wrap" id="topbarWrap">
+  <div class="topbar-inner">
+    <div class="topbar">
+      <div class="brand">Alla Pavlova</div>
+      <div class="top-actions">
+        <a class="btn" href="https://www.linkedin.com/in/alla-pavlova88/" target="_blank">LinkedIn</a>
+        <a class="btn" href="cv/cv.pdf" download>Download CV</a>
+        <button class="btn" onclick="toggleTheme()">🌙</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -290,6 +355,21 @@ a:hover {
     React, PostgreSQL, Docker, and Terraform. I am especially interested in backend
     roles, web platforms, OCR services, and modular application architecture.
   </p>
+</section>
+
+<h2 class="fade-in delay-2">Recent article</h2>
+<section class="article-box fade-in delay-2">
+  <div class="card-title">From structured workflows to software systems</div>
+  <p class="card-desc" style="margin-bottom: 12px;">
+    A short reflection on my transition into software development, system thinking,
+    backend engineering, and building practical products with FastAPI, React, Docker, and cloud tools.
+  </p>
+  <div class="meta">
+    <span class="tag">Backend</span>
+    <span class="tag">Career Shift</span>
+    <span class="tag">FastAPI</span>
+    <span class="tag">Systems Thinking</span>
+  </div>
 </section>
 
 <h2 class="fade-in delay-3">Projects</h2>
@@ -332,6 +412,29 @@ a:hover {
 
 </div>
 
+<h2 class="fade-in delay-3">Domain focus</h2>
+<div class="domains fade-in delay-3">
+  <div class="card">
+    <div class="card-title">Backend Engineering</div>
+    <div class="card-desc">REST APIs, FastAPI, ASP.NET, databases, application logic, modular structure.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">OCR & AI Services</div>
+    <div class="card-desc">Image-to-text workflows, document recognition, practical AI-assisted products.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Cloud & DevOps Basics</div>
+    <div class="card-desc">Docker, AWS basics, Terraform, deployment workflows and containerized services.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Education & Research</div>
+    <div class="card-desc">Academic background, structured documentation, systems thinking, publications.</div>
+  </div>
+</div>
+
 <h2 class="fade-in delay-4">Education & Certificates</h2>
 <div class="info-box fade-in delay-4">
   <div class="info-links">
@@ -355,9 +458,9 @@ a:hover {
     </div>
   </div>
 </div>
-<h2>Publications</h2>
 
-<div class="card">
+<h2 class="fade-in delay-4">Publications</h2>
+<div class="card fade-in delay-4">
   <div class="card-title">
     Academic Monograph (Co-author)
   </div>
@@ -365,12 +468,11 @@ a:hover {
   <div class="card-desc">
     "Fundamentals of Entrepreneurship in Innovation Activity" (Vol.1, 2012)<br>
     ISBN: 978-966-491-345-1<br><br>
-
     Covers innovation management, intellectual property systems, and entrepreneurship in socio-technical environments.<br><br>
-
     Referenced in academic publications.
   </div>
 </div>
+
 <h2 class="fade-in delay-4">Contact</h2>
 <div class="contact-box fade-in delay-4">
   <div class="contact-links">
@@ -387,6 +489,27 @@ a:hover {
 function toggleTheme() {
   document.body.classList.toggle("dark");
 }
+
+let lastScroll = 0;
+const topbar = document.getElementById("topbarWrap");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll <= 10) {
+    topbar.classList.remove("hidden");
+    lastScroll = currentScroll;
+    return;
+  }
+
+  if (currentScroll > lastScroll && currentScroll > 120) {
+    topbar.classList.add("hidden");
+  } else {
+    topbar.classList.remove("hidden");
+  }
+
+  lastScroll = currentScroll;
+});
 </script>
 
 </body>
