@@ -1,21 +1,207 @@
-<h1>From structured workflows to backend systems</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article | Alla Pavlova</title>
 
-<p>My path into software development is not a typical one.</p>
+<style>
+:root {
+  --bg: #f8fbff;
+  --text: #1f2937;
+  --card: #ffffff;
+  --accent: #60a5fa;
+  --muted: #6b7280;
+  --border: rgba(96, 165, 250, 0.35);
+  --shadow: rgba(0,0,0,0.08);
+}
+
+.dark {
+  --bg: #0f172a;
+  --text: #e5eefc;
+  --card: #1e293b;
+  --accent: #7cc4ff;
+  --muted: #94a3b8;
+  --border: rgba(124, 196, 255, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 96px 20px 40px;
+  background: linear-gradient(135deg, var(--bg) 0%, #eef5ff 100%);
+  color: var(--text);
+}
+
+/* header */
+.topbar-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.topbar-inner {
+  max-width: 980px;
+  margin: 16px auto 0;
+  padding: 0 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px var(--shadow);
+}
+
+.dark .topbar {
+  background: rgba(30,41,59,0.8);
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* article */
+.article {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 28px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+
+.article h1 {
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.article p {
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.meta {
+  margin-top: 20px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  margin-right: 6px;
+}
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar-wrap">
+  <div class="topbar-inner">
+    <div class="topbar">
+      <div>Alla Pavlova</div>
+      <div class="top-actions">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="projects.html">Projects</a>
+        <a class="btn" href="about.html">About</a>
+        <button class="btn" onclick="toggleTheme()">🌙</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article">
+
+<h1>From structured workflows to backend systems</h1>
 
 <p>
 My path into software development is not a typical one.
-
-Before moving into IT, I worked in environments that required structured thinking, coordination, and working with complex processes. Over time, I realized that many of these skills directly translate into backend development.
-
-What I enjoy most about backend engineering is working with systems as a whole — understanding how data flows, how services interact, and how to build something that is reliable and maintainable.
-
-Today I work with FastAPI, ASP.NET, and React, building web applications and APIs. I focus on clear structure, clean logic, and practical solutions rather than overcomplicated designs.
-
-One of the areas that interests me the most is building applied systems — OCR services, data processing pipelines, and backend logic that solves real problems.
-
-I am also interested in cloud deployment and infrastructure basics, using Docker, AWS, and Terraform to understand how applications move from development to production.
-
-My goal is to grow as a backend developer and work on real products where system thinking, reliability, and practical engineering matter.
-
-I am open to backend roles, internships, and opportunities to grow in a professional development environment.
 </p>
+
+<p>
+Before moving into IT, I worked in environments that required structured thinking,
+coordination, and working with complex processes. Over time, I realized that many of
+these skills directly translate into backend development.
+</p>
+
+<p>
+What I enjoy most about backend engineering is working with systems as a whole —
+understanding how data flows, how services interact, and how to build something that is
+reliable and maintainable.
+</p>
+
+<p>
+Today I work with FastAPI, ASP.NET, and React, building web applications and APIs.
+I focus on clear structure, clean logic, and practical solutions rather than
+overcomplicated designs.
+</p>
+
+<p>
+One of the areas that interests me the most is building applied systems — OCR services,
+data processing pipelines, and backend logic that solves real problems.
+</p>
+
+<p>
+I am also interested in cloud deployment and infrastructure basics, using Docker,
+AWS, and Terraform to understand how applications move from development to production.
+</p>
+
+<p>
+My goal is to grow as a backend developer and work on real products where system thinking,
+reliability, and practical engineering matter.
+</p>
+
+<p>
+I am open to backend roles, internships, and opportunities to grow in a professional environment.
+</p>
+
+<div class="meta">
+  <span class="tag">Backend</span>
+  <span class="tag">FastAPI</span>
+  <span class="tag">Career Shift</span>
+  <span class="tag">Systems Thinking</span>
+</div>
+
+</div>
+
+<div class="footer">
+  © 2026 Alla Pavlova
+</div>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
