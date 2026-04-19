@@ -326,7 +326,7 @@ a:hover {
         <a class="btn" href="projects.html">Projects</a>
         <a class="btn" href="about.html">About</a>
         <a class="btn" href="https://www.linkedin.com/in/alla-pavlova88/" target="_blank">LinkedIn</a>
-        <a class="btn" href="cv/cv.pdf" download>Download CV</a>
+        <a class="btn" href="cv/CV.pdf" download>Download CV</a>
         <button class="btn" onclick="toggleTheme()">🌙</button>
       </div>
     </div>
@@ -378,8 +378,18 @@ a:hover {
 </section>
 
 <h2 class="fade-in delay-3">Projects</h2>
-<div class="projects fade-in delay-3">
-
+  <div class="projects fade-in delay-3">
+    <div class="card">
+    <div class="card-title">
+      <a href="https://github.com/alla-pavlova/resort-demo" target="_blank">
+        ALLSANUM (Wellness UI Demo)
+      </a>
+    </div>
+    <div class="card-desc">
+      Frontend demo of wellness platform with responsive layout, UI components and client-side logic (React, TypeScript)
+    </div>
+  </div>
+  
   <div class="card">
     <div class="card-title">
       <a href="https://github.com/alla-pavlova/ls-resort-backend" target="_blank">LS Resort (Backend)</a>
@@ -414,7 +424,9 @@ a:hover {
     </div>
     <div class="card-desc">Mobile app built with React Native / Expo</div>
   </div>
-
+  <div style="margin-top: 20px;">
+    <a href="projects.html" class="btn">View all projects →</a>
+  </div>
 </div>
 
 <h2 class="fade-in delay-3">Domain focus</h2>
@@ -490,10 +502,22 @@ a:hover {
   © 2026 Alla Pavlova
 </div>
 
-<script>
 function toggleTheme() {
   document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
 }
+
+window.onload = function () {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+  }
+};
 
 let lastScroll = 0;
 const topbar = document.getElementById("topbarWrap");
